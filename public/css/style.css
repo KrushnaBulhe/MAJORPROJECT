@@ -60,7 +60,6 @@
     justify-content: center;
 }
 
-
 /* cards */
 
 .listing-card {
@@ -72,6 +71,8 @@
     border-radius: 1rem !important;
     width: 100% !important;
     object-fit: cover !important;
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
 }
 
 .card-body {
@@ -84,6 +85,12 @@
 
 .listing-link {
     text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .row {
+        flex-direction: column; /* Stack cards vertically */
+    }
 }
 
 /* card effect */

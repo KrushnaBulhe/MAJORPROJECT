@@ -39,13 +39,13 @@
         
 
         <div class="navbar-nav ms-auto">
-          <form class="d-flex">
-            <input class="form-control me-2 search-input" type="search" placeholder="Search destination" aria-label="Search">
+          <form class="d-flex" method="GET" action="./listings">
+            <input class="form-control me-2 search-input" type="search" name="q" placeholder="Search destination" aria-label="Search">
             <button class="btn search-btn my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
           </form>
         </div>
         <div class="navbar-nav ms-auto">
-          <a class="nav-link" href="/listings/new">Add new listing</a>
+          <a class="nav-link" href="/listings/new">Airbnb your home</a>
           <% if(!currentUser){ %>
             <a class="nav-link" href="/signup"><b>Signup</b></a>
             <a class="nav-link" href="/login"><b>Login</b></a>

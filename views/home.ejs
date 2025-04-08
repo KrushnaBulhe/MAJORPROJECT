@@ -1,0 +1,19 @@
+<%- include("./includes/navbar.ejs") %>
+
+<div class="container">
+    <h1>Welcome to Listings</h1>
+    <div class="row">
+        <% listings.forEach(listing => { %>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= listing.title %></h5>
+                        <p class="card-text"><%= listing.description %></p>
+                        <a href="/listings/<%= listing._id %>" class="btn btn-primary">View Listing</a>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>

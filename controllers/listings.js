@@ -1,8 +1,21 @@
 const Listing  = require("../models/listing.js"); 
+   
 
 module.exports.index = async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render('listings/index.ejs', { listings: allListings })};  
+    try {
+        let query = {};
+        if (req.query.q) {
+            query = { title: { $regex: req.query.q, $options: "i" } }; // Case-insensitive search
+        }
+
+        const allListings = await Listing.find(query);
+        res.render('listings/index.ejs', { listings: allListings });
+    } catch (error) {
+        console.error("Error fetching listings:", error);
+        req.flash("error", "Something went wrong!");
+        res.redirect("/listings");
+    }
+};    
 
 
 module.exports.renderNewForm = (req, res) => {    

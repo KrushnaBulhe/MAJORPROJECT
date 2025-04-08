@@ -16,13 +16,15 @@ const upload = multer({ storage });
 
 const listingController = require("../controllers/listings.js");
 
-
 router.get("/about", (req, res) => {
   res.render("listings/about");
 })
 
 
 // combining the routes of same path by router.route
+
+router.get("/", wrapAsync(listingController.index));
+
 
 router
   .route("/")

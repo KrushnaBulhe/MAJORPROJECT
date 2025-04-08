@@ -16,6 +16,7 @@
           margin-right: 2rem;
           margin-top: 2rem;
           opacity: 0.7;
+          width: 10%;
         }
 
         .filter:hover {
@@ -40,6 +41,24 @@
           display: flex;
           align-items: center;
         }
+
+
+
+        @media only screen and (max-width: 600px) {
+    #filters {
+        flex-direction: column; /* Stack filters vertically */
+        align-items: center; /* Center align items */
+    }
+
+    .filter {
+        width: 100%; /* Full width on small screens */
+        margin: 0.5rem 0; /* Adjust margin for spacing */
+    }
+
+    .card {
+        width: 100%; /* Full width for cards on mobile */
+    }
+}
 
     </style>
 

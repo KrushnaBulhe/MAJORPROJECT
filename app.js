@@ -18,6 +18,13 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
+const listingController = require("./controllers/listings.js");
+
+
+
+
+
+
 
 
 
@@ -101,9 +108,16 @@ passport.deserializeUser(User.deserializeUser());
 
 
 
-// app.get("/" ,(req,res) => {
-//     res.send("Hi , I am root");
+// app.get("/", async (req, res) => {
+//     const allListings = await Listing.find({});
+//     res.render("listings/index.ejs", { listings: allListings });
 // });
+
+
+const wrapAsync = require("./utils/wrapAsync.js"); // make sure you have this too
+
+
+
 
 
 
@@ -130,12 +144,18 @@ app.use((req,res,next)=>{
 app.use("/listings" , listingRouter);
 app.use("/listings/:id/reviews" , reviewRouter);
 app.use("/" , userRouter);
+app.get("/", wrapAsync(listingController.index));
+
+
+// app.use("/", listingsRoutes);
+
 
 
 
 app.all("*" , (req,res,next)=>{
     next(new ExpressError(404 ,"Page not Found!"));
 })
+
 
 
 //custom error handler
